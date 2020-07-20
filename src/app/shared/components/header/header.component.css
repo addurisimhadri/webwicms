@@ -1,0 +1,14 @@
+ul li {
+    list-style: none;
+}
+.mat-toolbar-multiple-rows {
+	min-height: 50px;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+	height: 50px;
+}
+img {
+	height: 60px;
+	width: 71%;
+	margin-left: -25px;
+}

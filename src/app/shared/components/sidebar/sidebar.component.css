@@ -1,0 +1,27 @@
+
+.mat-icon{
+    vertical-align: middlle;
+    margin-right:20px;
+}
+
+.profile-card{
+    text-align: center;
+    padding: 0 10px 10px 10px;
+}
+img {
+    width:100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%
+}
+
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+	height: 30px;
+}
+.mat-list-base .mat-subheader {
+	height: 30px;
+}
+.mat-subheader {
+	font-size: 20px !important;
+	/* color: black !important; */
+}

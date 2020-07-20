@@ -1,0 +1,29 @@
+<mat-nav-list>
+    <h2 matSubheader>Content Management</h2>
+    <button mat-button [matMenuTriggerFor]="contentUpload">Content Upload</button>
+<mat-menu #contentUpload="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="uploadContent">Upload Content</button>
+  <button mat-menu-item [matMenuTriggerFor]="aproveContent">Aprove Contnet</button>
+</mat-menu>
+
+<mat-menu #uploadContent="matMenu">
+  <button mat-menu-item >Upload Songs</button>
+  <button mat-menu-item > Upload Animations</button>
+  <button mat-menu-item >Upload Games</button>
+  <button mat-menu-item>Upload Video</button>
+  <button mat-menu-item>Upload Wallpapers</button>
+</mat-menu>
+
+<mat-menu #aproveContent="matMenu">
+  <button mat-menu-item>Aprove Songs</button>
+  <button mat-menu-item>Aprove Animations</button>
+  <button mat-menu-item>Aprove Games</button>
+  <button mat-menu-item>Aprove Video</button>
+  <button mat-menu-item>Aprove Wallpapers</button>
+</mat-menu>
+    <a mat-list-item routerLinkActive="list-item-active"  routerLink="/posts">Posts</a>
+    
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">Contacts</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Phone</a>
+    
+</mat-nav-list>
