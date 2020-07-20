@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "webcms"
+    }
+  },
+  "defaultProject": "webcms",
+  "cli": {
+    "analytics": false
+  }
 }
