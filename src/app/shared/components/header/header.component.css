@@ -12,3 +12,7 @@ img {
 	width: 71%;
 	margin-left: -25px;
 }
+
+.menu-spacer1 {
+	flex: 1 1 auto;
+  }
