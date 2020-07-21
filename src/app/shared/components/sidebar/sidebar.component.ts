@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
+  @Output() sideBarForMe: EventEmitter<any> =new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  uploadSongs(){
+    this.sideBarForMe.emit();
+  }
 }

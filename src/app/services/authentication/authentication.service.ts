@@ -17,7 +17,7 @@ return this.httpClient
   .pipe(
     map(userData => {   
       sessionStorage.setItem("web_url", this.web_url);
-      sessionStorage.setItem("username", userData.token);
+      sessionStorage.setItem("username", userData.userName);
       let tokenStr = "Bearer " + userData.token;
       sessionStorage.setItem("token", tokenStr);
       sessionStorage.setItem("userId", userData.userId);
@@ -38,6 +38,7 @@ isUserLoggedIn() {
 logOut() {
   sessionStorage.removeItem('username')
   sessionStorage.removeItem('userId')
+  sessionStorage.removeItem('token')
 }
 
 }

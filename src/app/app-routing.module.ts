@@ -13,14 +13,14 @@ const routes: Routes = [
   {
     path:'dashboard',component:DefaultComponent,
     children:[{
-      path:'dashboard',component:DashboardComponent
-    },
+      path:'',component:DashboardComponent
+    }
+  
+  ]
+  }, 
   {
     path:'posts',component:PostsComponent
   }
-  ]
-  }
-  
 ];
 
 @NgModule({
