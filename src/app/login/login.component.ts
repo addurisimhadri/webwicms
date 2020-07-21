@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         (this.authuser.authenticate(loginPayload).subscribe(
           data => {
             alert(sessionStorage.getItem('username'));
-            this.router.navigate(['dashboard'])
+            this.router.navigate(['db'])
             this.loginInvalid = false
           },
           error => {

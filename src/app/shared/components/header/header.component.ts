@@ -1,4 +1,5 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +8,14 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Output() toggelSideBarForMe: EventEmitter<any> =new EventEmitter();
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
   toggelSideBar(){
     this.toggelSideBarForMe.emit();
+  }
+  upload(cType : any){
+    this.router.navigate(['db/fileUpload'])
   }
 }
