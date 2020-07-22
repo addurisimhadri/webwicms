@@ -4,7 +4,7 @@
         <button mat-icon-button  (click)="toggelSideBar()" fxShow="true" fxHide.gt-sm>
           <mat-icon>menu</mat-icon>
         </button>
-  
+   
         <span class="cms">CMS</span>
         <span class="menu-spacer"></span>
         <div fxShow="true" fxHide.lt-md>
@@ -21,7 +21,7 @@
         </mat-menu>
         <mat-menu #uploadContent="matMenu">
             <button mat-menu-item (click)="upload(6)">Upload Songs</button>
-            <button mat-menu-item >Aprove Content</button>
+            <button mat-menu-item (click)="upload(41)" >Upload Video</button>
         </mat-menu>
         <mat-menu #contentFolders="matMenu">
             <button mat-menu-item >Create Folder</button>
