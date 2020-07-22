@@ -12,6 +12,6 @@ export class ContenttypeService {
 
   getContentType() :Observable<ContentType[]>{
 
-    return this.httpClient.get<ContentType[]>(this.web_url+"/wicmsapi/api/employee/getAll");
+    return this.httpClient.get<ContentType[]>(this.web_url+"/wicmsapi/ct/getAll");
   }
 }

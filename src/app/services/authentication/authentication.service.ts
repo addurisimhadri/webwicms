@@ -38,7 +38,7 @@ isUserLoggedIn() {
 logOut() {
   sessionStorage.removeItem('username')
   sessionStorage.removeItem('userId')
-  sessionStorage.removeItem('token')
+ // sessionStorage.removeItem('token')
 }
 
 }
