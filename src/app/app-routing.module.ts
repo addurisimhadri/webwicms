@@ -4,6 +4,8 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PostsComponent } from './modules/posts/posts.component';
 import { LoginComponent } from './login/login.component';
+import {AuthGuardService} from './services/authentication/auth-guard.service'
+import { FileUploadComponent } from './modules/upload/file-upload/file-upload.component';
 
 const routes: Routes = [
   {
@@ -11,16 +13,19 @@ const routes: Routes = [
   },
 
   {
-    path:'dashboard',component:DefaultComponent,
+    path:'db',component:DefaultComponent,
     children:[{
-      path:'',component:DashboardComponent
+      path:'',component:DashboardComponent,canActivate:[AuthGuardService]
+    },
+    {
+      path:'posts',component:PostsComponent,canActivate:[AuthGuardService]
+    },
+    {
+      path:'fileUpload',component:FileUploadComponent,canActivate:[AuthGuardService]
     }
-  
   ]
-  }, 
-  {
-    path:'posts',component:PostsComponent
   }
+  
 ];
 
 @NgModule({

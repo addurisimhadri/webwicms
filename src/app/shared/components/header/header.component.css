@@ -16,3 +16,6 @@ img {
 .menu-spacer1 {
 	flex: 1 1 auto;
   }
+  .cms{
+	  font-size: 30px;
+  }

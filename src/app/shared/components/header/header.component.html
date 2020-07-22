@@ -16,10 +16,13 @@
           <button mat-menu-item [matMenuTriggerFor]="contentFolders">Content Folders</button>
           </mat-menu>
           <mat-menu #contentUpload="matMenu">
-            <button mat-menu-item >Upload Content</button>
+            <button mat-menu-item [matMenuTriggerFor]="uploadContent">Upload Content</button>
             <button mat-menu-item >Aprove Content</button>
         </mat-menu>
-        
+        <mat-menu #uploadContent="matMenu">
+            <button mat-menu-item (click)="upload(6)">Upload Songs</button>
+            <button mat-menu-item >Aprove Content</button>
+        </mat-menu>
         <mat-menu #contentFolders="matMenu">
             <button mat-menu-item >Create Folder</button>
             <button mat-menu-item >Edit Content</button>
