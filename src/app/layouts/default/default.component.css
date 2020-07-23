@@ -11,6 +11,7 @@ mat-drawer-container{
 }
 
 mat-drawer-content{
+    background-image: url(https://blog.shadowinfosystem.com/wp-content/uploads/2018/02/00d9b1e39f02d57be65ad2a9a6eaa3b8_XL-1.jpg);
     padding: 20px;
 }
 .example-container {

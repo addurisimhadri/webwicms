@@ -1,22 +1,38 @@
-<form  id="search-form">
-    <div class="data-cttype">
-        <div class="data-label">Content Type</div>
-        <div class="data-select">
-            <select name="cctype" data-ng-model="cctype" class="data-fix" >
-                <option data-ng-repeat="contentType in contentTypes" value="{{contentType.contentId}}">{{contentType.contentName}}</option>
-            </select>
-        </div>
-    </div>
-    
-    <div class="data-file">
-        <div class="data-label">Upload File</div>
-        <div class="data-file-sub">
-            <input type = "file" name="file" id="file" data-file-model = "file" class="data-fix"/>
-        </div>
-    </div>
-    <input type="hidden" name="folder" id="folder" data-file-model = "folder" value="<%="action"%>">
-    <div class="data-button">
-        <button data-ng-click="getDataFromServer()" >Upload</button> 
-    </div>
-    <div class="suc_msg" data-ng-bind="success"></div>
+
+    <mat-card>
+        <h1>Content Upload</h1>
+        <form [formGroup]="form" autocomplete="off"  (ngSubmit)="onSubmit()"
+        fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-card-content>       
+            <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Content Type</mat-label>
+                <mat-select  name="contentId" formControlName="contentId">
+                  <mat-option *ngFor="let contentType of contentTypes" [value]="contentType.contentId">
+                    {{contentType.contentName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Content Provider</mat-label>
+                <mat-select  name="cpId" formControlName="cpId">
+                  <mat-option *ngFor="let contentProvider of contentProviders" [value]="contentProvider.cpId">
+                    {{contentProvider.cpName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
+            <div class="form-group">                                   
+                <input type="file" formControlName="zipFile" accept=".zip" (change)="onFileChanged($event)" class="form-control file " >            
+            </div>
+            <p class="upload">
+                <button type="submit"  mat-raised-button  color="primary">Upload</button>
+            </p>
+          
+        </mat-card-content>
+      
+
     </form>
+      </mat-card>

@@ -25,7 +25,7 @@ import {MatRadioModule} from  '@angular/material/radio';
 import {MatSelectModule} from  '@angular/material/select';
 import {MatSliderModule} from  '@angular/material/slider';
 import {MatDividerModule} from  '@angular/material/divider';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -33,12 +33,15 @@ import {MatDividerModule} from  '@angular/material/divider';
   imports: [
     CommonModule,MatButtonModule,  MatMenuModule, MatSidenavModule, MatPaginatorModule,MatDatepickerModule,MatToolbarModule, MatIconModule,MatListModule,
     MatRadioModule,MatSelectModule,MatSliderModule,MatDividerModule,MatNativeDateModule,MatSnackBarModule,MatDialogModule,MatTableModule,
-    MatSortModule,MatTabsModule,MatCheckboxModule,MatInputModule,MatCardModule,MatProgressSpinnerModule
+    MatSortModule,MatTabsModule,MatCheckboxModule,MatInputModule,MatCardModule,MatProgressSpinnerModule,
+    MatFormFieldModule,
+  
   ],
   exports:[
     CommonModule,MatButtonModule,  MatMenuModule, MatSidenavModule, MatPaginatorModule,MatDatepickerModule,MatToolbarModule, MatIconModule,MatListModule,
     MatRadioModule,MatSelectModule,MatSliderModule,MatDividerModule,MatNativeDateModule,MatSnackBarModule,MatDialogModule,MatTableModule,
-    MatSortModule,MatTabsModule,MatCheckboxModule,MatInputModule,MatCardModule,MatProgressSpinnerModule
+    MatSortModule,MatTabsModule,MatCheckboxModule,MatInputModule,MatCardModule,MatProgressSpinnerModule,
+    MatFormFieldModule
   ]
 })
 export class MymaterialModule { }

@@ -8,6 +8,10 @@ import { PostsComponent } from '../../modules/posts/posts.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {FileUploadComponent} from '../../modules/upload/file-upload/file-upload.component'
 import {FileUploadService} from '../../services/upload/file-upload.service'
+import { MymaterialModule } from 'src/app/mymaterial/mymaterial.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -19,7 +23,10 @@ import {FileUploadService} from '../../services/upload/file-upload.service'
     CommonModule    ,
     RouterModule,
     SharedModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MymaterialModule,
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers:[
     FileUploadService
