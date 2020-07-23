@@ -60,7 +60,8 @@ export class FileUploadComponent implements OnInit {
   uploadData.append('cpId',this.form.controls.cpId.value);
   this.fileUploadService.upload(uploadData).subscribe(
     res=>{
-      alert(res);
+      alert(res.message);
+      this.selectedFile=undefined;
     }, error => { 
       alert(error.status+"=========="+error.message+"=========="+error.data);
     }
