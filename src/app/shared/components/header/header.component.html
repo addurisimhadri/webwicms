@@ -17,7 +17,7 @@
           </mat-menu>
           <mat-menu #contentUpload="matMenu">
             <button mat-menu-item [matMenuTriggerFor]="uploadContent">Upload Content</button>
-            <button mat-menu-item >Aprove Content</button>
+            <button mat-menu-item (click)="approve(31)">Aprove Content</button>
         </mat-menu>
         <mat-menu #uploadContent="matMenu">
             <button mat-menu-item (click)="upload(6)">Upload Songs</button>

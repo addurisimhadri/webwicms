@@ -24,4 +24,9 @@ export class HeaderComponent implements OnInit {
     this.ds.setOption('cType', cType);  
     this.router.navigate(['db/fileUpload'])
   }
+  approve(cType : any){
+    this.ds.setOption('cType', cType);  
+    this.router.navigate(['db/approveContent'])
+  }
+  
 }

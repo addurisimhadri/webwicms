@@ -11,6 +11,10 @@ import {FileUploadService} from '../../services/upload/file-upload.service'
 import { MymaterialModule } from 'src/app/mymaterial/mymaterial.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ContentService } from 'src/app/services/content/content.service';
+import { ContenttypeService } from 'src/app/services/content/contenttype.service';
+import { ContentproviderService } from 'src/app/services/content/contentprovider.service';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers:[
-    FileUploadService
+    FileUploadService,
+    ContentService,
+    ContenttypeService,
+    ContentproviderService
   ]
 })
 export class DefaultModule { }

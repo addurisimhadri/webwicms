@@ -10,11 +10,13 @@ import { MymaterialModule } from './mymaterial/mymaterial.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule ,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { InterceptorService } from './services/authentication/interceptor.service';
+import { ApproveContentComponent } from './modules/upload/approve-content/approve-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ApproveContentComponent
   ],
   imports: [
     BrowserModule,

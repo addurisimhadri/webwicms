@@ -6,6 +6,7 @@ import {ContentType} from '../../../models/content-type.model';
 import {ContentproviderService} from '../../../services/content/contentprovider.service';
 import {ContentProvider} from '../../../models/content-provider';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-file-upload',
@@ -29,7 +30,8 @@ export class FileUploadComponent implements OnInit {
   constructor(private fileUploadService: FileUploadService,
     private ds: DataService, 
     private contenttypeService: ContenttypeService,
-    private contentproviderService:ContentproviderService) {
+    private contentproviderService:ContentproviderService,
+    private router:Router) {
     this.data = ds.getOption();
     //alert(this.data);
    }
@@ -61,7 +63,7 @@ export class FileUploadComponent implements OnInit {
   this.fileUploadService.upload(uploadData).subscribe(
     res=>{
       alert(res.message);
-      this.selectedFile=undefined;
+      this.router.navigate(['db/approveContent']);
     }, error => { 
       alert(error.status+"=========="+error.message+"=========="+error.data);
     }
