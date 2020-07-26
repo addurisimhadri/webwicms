@@ -27,7 +27,7 @@ export class InterceptorService implements HttpInterceptor{
    let token = sessionStorage.getItem("token");
    //alert(token);
    if (token) {
-     alert(token);
+     //alert(token);
      req = req.clone({
        setHeaders: {
          Authorization: token

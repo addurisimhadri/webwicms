@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
     this.toggelSideBarForMe.emit();
   }
   upload(cType : any){
+    //alert(cType);
     this.ds.setOption('cType', cType);  
     this.router.navigate(['db/fileUpload'])
   }

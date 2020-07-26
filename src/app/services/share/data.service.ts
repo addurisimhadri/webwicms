@@ -6,11 +6,12 @@ import { Injectable } from '@angular/core';
 export class DataService {
   private data = {};
   constructor() { }
-  setOption(option, value) {      
+  setOption(option, value) { 
+    alert(""+option+"=========="+value);     
     this.data[option] = value;  
   }  
   
-  getOption() {  
+  getOption() { 
     return this.data;  
   }  
 }

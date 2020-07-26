@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FileUploadService } from 'src/app/services/upload/file-upload.service';
 import { DataService } from '../../../services/share/data.service';
 import {ContenttypeService} from '../../../services/content/contenttype.service'
@@ -6,7 +6,7 @@ import {ContentType} from '../../../models/content-type.model';
 import {ContentproviderService} from '../../../services/content/contentprovider.service';
 import {ContentProvider} from '../../../models/content-provider';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router,NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-file-upload',
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./file-upload.component.css']
 })
 
-export class FileUploadComponent implements OnInit {
+export class FileUploadComponent implements OnInit , OnDestroy{
   public form: FormGroup;
   public data; 
   cType : any;
@@ -26,18 +26,34 @@ export class FileUploadComponent implements OnInit {
   @Input() acceptedTypes = '*.*';
   selectedFile: File;
   selectedFileText = '';
-
+  mySubscription: any;
   constructor(private fileUploadService: FileUploadService,
     private ds: DataService, 
     private contenttypeService: ContenttypeService,
     private contentproviderService:ContentproviderService,
     private router:Router) {
     this.data = ds.getOption();
-    //alert(this.data);
+   
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;    
+    };    
+    this.mySubscription = this.router.events.subscribe((event) => {    
+      if (event instanceof NavigationEnd) {    
+        // Trick the Router into believing it's last link wasn't previously loaded    
+        this.router.navigated = false;    
+      }    
+    });
    }
+   ngOnDestroy() {
+    if (this.mySubscription) {  
+      this.mySubscription.unsubscribe();  
+    }  
+  }
   
   ngOnInit(): void {
-    this.contenttypeService.getContentType().subscribe( data => { 
+    this.cType=this.data.cType;  
+    this.contenttypeService.getContentType(this.cType).subscribe( data => {
+      //alert(data);
       this.contentTypes = data;
     })
     this.contentproviderService.getContentProviders().subscribe( data => { 

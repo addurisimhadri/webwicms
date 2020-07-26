@@ -10,8 +10,10 @@ export class ContenttypeService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getContentType() :Observable<ContentType[]>{
-
+  getContentTypes() :Observable<ContentType[]>{
     return this.httpClient.get<ContentType[]>(this.web_url+"/wicmsapi/ct/getAll");
+  }
+  getContentType(cType) :Observable<ContentType[]>{
+    return this.httpClient.get<ContentType[]>(this.web_url+"/wicmsapi/ct/get/"+cType);
   }
 }

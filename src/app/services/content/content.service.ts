@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Content } from 'src/app/models/content';
 import { Observable } from 'rxjs';
+import { ApiResponse } from 'src/app/models/api-response';
+export interface Content{
+  contId :number;
+	ctTypeId : number;
+	name : string;
+	title : string;
+  sampleName : any;
+  status : string;
+
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +22,16 @@ export class ContentService {
 
   getContentByCT() :Observable<Content[]>{
     return this.httpClient.get<Content[]>(this.web_url+"/wicmsapi/cont/31/getAll");
+  }
+  updateStatus(requestData)  :Observable<ApiResponse>{
+    let Data={"contents":requestData}
+    console.log("Data "+JSON.stringify(Data));
+    const httpOptions = {
+      headers: new HttpHeaders({     
+        'Content-Type':  'application/json',        
+      })
+    };
+    return this.httpClient.post<ApiResponse>(this.web_url+"/wicmsapi/cont/updatestatus",JSON.stringify(Data),httpOptions);  
+
   }
 }

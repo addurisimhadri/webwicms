@@ -1,12 +1,25 @@
 table {
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .mat-form-field {
   font-size: 14px;
-  width: 100%;
+  width: 80%;
 }
 
 td, th {
-  width: 25%;
+  width: 15%;
+}
+.mat-paginator {
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+}
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+	padding: 4px;
+}
+img{
+  width: 40px;
+  height: 40px;
 }
