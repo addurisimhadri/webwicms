@@ -11,12 +11,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule ,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { InterceptorService } from './services/authentication/interceptor.service';
 import { ApproveContentComponent } from './modules/upload/approve-content/approve-content.component';
+import { ViewContentComponent } from './modules/content/view-content/view-content.component';
+import { EditContentComponent } from './modules/content/edit-content/edit-content.component';
+import { DeleteContentComponent } from './modules/content/delete-content/delete-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ApproveContentComponent
+    ApproveContentComponent,
+    ViewContentComponent,
+    EditContentComponent,
+    DeleteContentComponent
   ],
   imports: [
     BrowserModule,

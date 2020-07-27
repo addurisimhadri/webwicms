@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         const loginPayload = {username: username, password: password};
         (this.authuser.authenticate(loginPayload).subscribe(
           data => {
-            alert(sessionStorage.getItem('username'));
+            //alert(sessionStorage.getItem('username'));
             this.router.navigate(['db'])
             this.loginInvalid = false
           },

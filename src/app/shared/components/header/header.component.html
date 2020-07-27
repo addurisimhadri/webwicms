@@ -17,20 +17,32 @@
           </mat-menu>
           <mat-menu #contentUpload="matMenu">
             <button mat-menu-item [matMenuTriggerFor]="uploadContent">Upload Content</button>
-            <button mat-menu-item (click)="approve(31)">Aprove Content</button>
+            <button mat-menu-item [matMenuTriggerFor]="approveContent" >Aprove Content</button>
         </mat-menu>
         <mat-menu #uploadContent="matMenu">
             <button mat-menu-item (click)="upload(6)">Upload Songs</button>
             <button mat-menu-item (click)="upload(41)" >Upload Video</button>
+            <button mat-menu-item (click)="upload(31)" >Upload Images</button>
+        </mat-menu>
+        <mat-menu #approveContent="matMenu">            
+            <button mat-menu-item (click)="approve(6)">Approve Songs</button>
+            <button mat-menu-item (click)="approve(41)" >Approve Videos</button>
+            <button mat-menu-item (click)="approve(31)" >Approve Images</button>
         </mat-menu>
         <mat-menu #contentFolders="matMenu">
             <button mat-menu-item >Create Folder</button>
             <button mat-menu-item >Edit Content</button>
-            <button mat-menu-item >View Content</button>
+            <button mat-menu-item [matMenuTriggerFor]="viewContent">View Content</button>
             <button mat-menu-item >Delete Content</button>
             <button mat-menu-item >Edit Content Device Group</button>
             <button mat-menu-item >Bulk Delete Content</button>
         </mat-menu>
+        <mat-menu #viewContent="matMenu">            
+            <button mat-menu-item (click)="view(6)">View Songs</button>
+            <button mat-menu-item (click)="view(41)" >View Videos</button>
+            <button mat-menu-item (click)="view(31)" >View Images</button>
+        </mat-menu>
+
         <button mat-button [matMenuTriggerFor]="portalManagement">Portal Management</button> 
         <mat-menu #portalManagement="matMenu">
             <button mat-menu-item [matMenuTriggerFor]="mainPortal">Main Portal</button>

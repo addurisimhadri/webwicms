@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import {AuthGuardService} from './services/authentication/auth-guard.service'
 import { FileUploadComponent } from './modules/upload/file-upload/file-upload.component';
 import { ApproveContentComponent } from './modules/upload/approve-content/approve-content.component';
+import {ViewContentComponent} from './modules/content/view-content/view-content.component'
 
 const routes: Routes = [
   {
@@ -26,6 +27,9 @@ const routes: Routes = [
     },
     {
       path:'approveContent',component:ApproveContentComponent,canActivate:[AuthGuardService]
+    },
+    {
+      path:'viewContent',component:ViewContentComponent,canActivate:[AuthGuardService]
     }
   ]
   }

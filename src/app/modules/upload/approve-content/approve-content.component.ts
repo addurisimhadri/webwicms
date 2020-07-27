@@ -5,18 +5,13 @@ import {MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import {ContentService} from '../../../services/content/content.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { DataService } from 'src/app/services/share/data.service';
+import {Content} from '../../../models/content';
+
 export interface UserData {
   id: string;
   name: string;
   progress: string;
-}
-export interface Content{
-  contId :number;
-	ctTypeId : number;
-	name : string;
-	title : string;
-	sampleName : any;
-
 }
 
 
@@ -34,7 +29,8 @@ export class ApproveContentComponent implements OnInit {
   firstName: boolean;
   contents :Content[];
   users :any;
-
+  public data; 
+  cType : any;
   myform: FormGroup;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -55,18 +51,22 @@ masterToggle() {
       this.dataSource.data.forEach(row => this.selection.select(row));
 }
 
-  constructor(private contentService: ContentService) {  }
+  constructor(private ds: DataService,private contentService: ContentService) {
+    this.data = ds.getOption();
+    }
 
   
   ngOnInit() {
-    this.getContentByCT();
+    this.getApprovableContentByCT();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.myform = new FormGroup({
     });
   }
-  getContentByCT(){
-    this.contentService.getContentByCT().subscribe(
+  getApprovableContentByCT(){
+    this.cType=this.data.cType;
+    alert(this.cType);
+    this.contentService.getApprovableContentByCT(this.cType).subscribe(
       res=>{
         this.dataSource.data = res as Content[];
       },
@@ -74,14 +74,14 @@ masterToggle() {
           alert(error.status+"======================="+error.message);
       }
     );
-
-  } 
+  }
   
   onSubmit(){
     this.contents=this.selection.selected;
    this.contentService.updateStatus(this.contents).subscribe(res=>{
       alert(res.message);
-      this.getContentByCT();
+      this.getApprovableContentByCT();
+      this.selection.clear();
    });
   }
 }

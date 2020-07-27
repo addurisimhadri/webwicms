@@ -88,7 +88,7 @@ export class FileUploadComponent implements OnInit , OnDestroy{
  }
   onFileChanged(event) {
   this.selectedFile = event.target.files[0];
-  alert(this.selectedFile.name);
+  //alert(this.selectedFile.name);
 }
 
 

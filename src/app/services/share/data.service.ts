@@ -7,7 +7,7 @@ export class DataService {
   private data = {};
   constructor() { }
   setOption(option, value) { 
-    alert(""+option+"=========="+value);     
+    //alert(""+option+"=========="+value);     
     this.data[option] = value;  
   }  
   

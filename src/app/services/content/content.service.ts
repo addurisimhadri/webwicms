@@ -2,15 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiResponse } from 'src/app/models/api-response';
-export interface Content{
-  contId :number;
-	ctTypeId : number;
-	name : string;
-	title : string;
-  sampleName : any;
-  status : string;
-
-}
+import {Content} from '../../models/content'
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +12,11 @@ export class ContentService {
   web_url : any =sessionStorage.getItem('web_url');
   constructor(private httpClient:HttpClient) { }
 
-  getContentByCT() :Observable<Content[]>{
-    return this.httpClient.get<Content[]>(this.web_url+"/wicmsapi/cont/31/getAll");
+  getApprovableContentByCT(cType) :Observable<Content[]>{
+    return this.httpClient.get<Content[]>(this.web_url+"/wicmsapi/cont/approvable/"+cType+"/getAll");
+  }
+  getApprovedContentByCT(cType) :Observable<Content[]>{
+    return this.httpClient.get<Content[]>(this.web_url+"/wicmsapi/cont/approved/"+cType+"/getAll");
   }
   updateStatus(requestData)  :Observable<ApiResponse>{
     let Data={"contents":requestData}

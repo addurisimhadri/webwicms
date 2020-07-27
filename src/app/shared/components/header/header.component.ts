@@ -29,5 +29,9 @@ export class HeaderComponent implements OnInit {
     this.ds.setOption('cType', cType);  
     this.router.navigate(['db/approveContent'])
   }
+  view(cType : any){
+    this.ds.setOption('cType', cType);  
+    this.router.navigate(['db/viewContent'])
+  }
   
 }
