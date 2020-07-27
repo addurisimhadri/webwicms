@@ -7,6 +7,7 @@ import {ContentService} from '../../../services/content/content.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DataService } from 'src/app/services/share/data.service';
 import {Content} from '../../../models/content';
+import { Router } from '@angular/router';
 
 export interface UserData {
   id: string;
@@ -51,7 +52,7 @@ masterToggle() {
       this.dataSource.data.forEach(row => this.selection.select(row));
 }
 
-  constructor(private ds: DataService,private contentService: ContentService) {
+  constructor(private ds: DataService,private contentService: ContentService, private router:Router) {
     this.data = ds.getOption();
     }
 
@@ -72,6 +73,7 @@ masterToggle() {
       },
       error=>{
           alert(error.status+"======================="+error.message);
+          this.router.navigate(['db'])
       }
     );
   }

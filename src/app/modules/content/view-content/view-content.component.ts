@@ -5,6 +5,7 @@ import { DataService } from 'src/app/services/share/data.service';
 import { ContentService } from 'src/app/services/content/content.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-view-content',
   templateUrl: './view-content.component.html',
@@ -17,10 +18,25 @@ export class ViewContentComponent implements OnInit {
   cType : any;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  constructor(private ds: DataService,private contentService: ContentService) {
+  mySubscription: any;
+  constructor(private ds: DataService,private contentService: ContentService,
+    private router:Router) {
     this.data = ds.getOption();
-    }
-
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;    
+    };    
+    this.mySubscription = this.router.events.subscribe((event) => {    
+    if (event instanceof NavigationEnd) {    
+      // Trick the Router into believing it's last link wasn't previously loaded    
+      this.router.navigated = false;    
+    }    
+    });
+  }
+  ngOnDestroy() {
+    if (this.mySubscription) {  
+      this.mySubscription.unsubscribe();  
+    }  
+  }
     ngOnInit() { 
       this.getApprovedContentByCT();     
       this.dataSource.paginator = this.paginator;
@@ -35,6 +51,7 @@ export class ViewContentComponent implements OnInit {
         },
         error=>{
             alert(error.status+"======================="+error.message);
+            this.router.navigate(['db'])
         }
       );
     }

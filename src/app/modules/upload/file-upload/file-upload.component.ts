@@ -82,6 +82,7 @@ export class FileUploadComponent implements OnInit , OnDestroy{
       this.router.navigate(['db/approveContent']);
     }, error => { 
       alert(error.status+"=========="+error.message+"=========="+error.data);
+      this.router.navigate(['db'])
     }
   );
 
