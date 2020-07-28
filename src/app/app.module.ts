@@ -14,6 +14,7 @@ import { ApproveContentComponent } from './modules/upload/approve-content/approv
 import { ViewContentComponent } from './modules/content/view-content/view-content.component';
 import { EditContentComponent } from './modules/content/edit-content/edit-content.component';
 import { DeleteContentComponent } from './modules/content/delete-content/delete-content.component';
+import { CreateCategoryComponent } from './modules/category/create-category/create-category.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DeleteContentComponent } from './modules/content/delete-content/delete-
     ApproveContentComponent,
     ViewContentComponent,
     EditContentComponent,
-    DeleteContentComponent
+    DeleteContentComponent,
+    CreateCategoryComponent
   ],
   imports: [
     BrowserModule,
