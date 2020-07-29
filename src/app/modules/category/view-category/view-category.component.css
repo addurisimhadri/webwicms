@@ -1,0 +1,40 @@
+table {
+    width: 40%;
+    margin: 0 auto;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 40%;
+  }
+  
+  td, th {
+    width: 15%;
+  }
+  .mat-paginator {
+      display: block;
+      width: 40%;
+      margin: 0 auto;
+  }
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+      padding: 4px;
+  }
+  img{
+    width: 40px;
+    height: 40px;
+  }
+  .btn1 {
+    margin: 10px 0px;
+  }
+  .form-group {
+	width: 5%;
+	margin: 0 auto;
+	padding-left: 250px;
+}
+  @media (min-width: 1200px) {
+    .form-group {
+        width: 1%;
+        margin: 0 auto;
+        padding-left: 308px;
+    }
+}

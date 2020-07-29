@@ -30,7 +30,7 @@
             <button mat-menu-item (click)="approve(31)" >Approve Images</button>
         </mat-menu>
         <mat-menu #contentFolders="matMenu">
-            <button mat-menu-item >Create Folder</button>
+            <button mat-menu-item (click)="viewConCat()" >View/Add Category</button>
             <button mat-menu-item >Edit Content</button>
             <button mat-menu-item [matMenuTriggerFor]="viewContent">View Content</button>
             <button mat-menu-item >Delete Content</button>

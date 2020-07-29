@@ -33,5 +33,7 @@ export class HeaderComponent implements OnInit {
     this.ds.setOption('cType', cType);  
     this.router.navigate(['db/viewContent'])
   }
-  
+  viewConCat(){
+    this.router.navigate(['db/viewConCat'])
+  }
 }

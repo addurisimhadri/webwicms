@@ -8,6 +8,8 @@ import {AuthGuardService} from './services/authentication/auth-guard.service'
 import { FileUploadComponent } from './modules/upload/file-upload/file-upload.component';
 import { ApproveContentComponent } from './modules/upload/approve-content/approve-content.component';
 import {ViewContentComponent} from './modules/content/view-content/view-content.component'
+import { CreateCategoryComponent } from './modules/category/create-category/create-category.component';
+import { ViewCategoryComponent } from './modules/category/view-category/view-category.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,12 @@ const routes: Routes = [
     },
     {
       path:'viewContent',component:ViewContentComponent,canActivate:[AuthGuardService]
+    },
+    {
+      path:'viewConCat',component:ViewCategoryComponent,canActivate:[AuthGuardService]
+    },
+    {
+      path:'createConCat',component:CreateCategoryComponent,canActivate:[AuthGuardService]
     }
   ]
   }
