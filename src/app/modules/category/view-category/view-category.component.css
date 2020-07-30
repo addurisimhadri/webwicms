@@ -5,7 +5,7 @@ table {
   
   .mat-form-field {
     font-size: 14px;
-    width: 40%;
+    width: 50%;
   }
   
   td, th {
@@ -29,12 +29,19 @@ table {
   .form-group {
 	width: 5%;
 	margin: 0 auto;
-	padding-left: 250px;
+	padding-left: 220px;
 }
+
   @media (min-width: 1200px) {
     .form-group {
-        width: 1%;
-        margin: 0 auto;
-        padding-left: 308px;
+      width: 10%;
+      margin: 0 auto;
+      padding-left: 292px;
     }
 }
+mat-card {
+  max-width: 515px;
+  margin: 2em auto;
+  text-align: center;
+}
+

@@ -24,6 +24,16 @@
                 </mat-select>
               </mat-form-field>
             </p>
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select  name="pfId" formControlName="pfId">
+                  <mat-option *ngFor="let physicalFolder of physicalFolders" [value]="physicalFolder.id">
+                    {{physicalFolder.folderName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
             <div class="form-group">                                   
                 <input type="file" formControlName="zipFile" accept=".zip" (change)="onFileChanged($event)" class="form-control file " >            
             </div>

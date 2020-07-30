@@ -7,6 +7,7 @@ import {ContentproviderService} from '../../../services/content/contentprovider.
 import {ContentProvider} from '../../../models/content-provider';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router,NavigationEnd } from '@angular/router';
+import { CreateConCategoryService, PhysicalFolder } from 'src/app/services/category/create-con-category.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -22,6 +23,8 @@ export class FileUploadComponent implements OnInit , OnDestroy{
   contentType:ContentType;
   contentProviders:ContentProvider[];
   contentProvider:ContentProvider;
+  physicalFolder : PhysicalFolder=new PhysicalFolder('','','','');
+  physicalFolders : PhysicalFolder[];
   @Input() allowMultipleFiles = false;
   @Input() acceptedTypes = '*.*';
   selectedFile: File;
@@ -31,7 +34,9 @@ export class FileUploadComponent implements OnInit , OnDestroy{
     private ds: DataService, 
     private contenttypeService: ContenttypeService,
     private contentproviderService:ContentproviderService,
-    private router:Router) {
+    private router:Router,
+    private createConCategoryService: CreateConCategoryService
+    ) {
     this.data = ds.getOption();
    
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -59,10 +64,17 @@ export class FileUploadComponent implements OnInit , OnDestroy{
     this.contentproviderService.getContentProviders().subscribe( data => { 
       this.contentProviders = data;
     })
+    this.createConCategoryService.getCtTypeFolders(this.cType).
+    subscribe(res=>{
+      this.physicalFolders=res;
+    },error=>{
+      alert(error.status+"=========="+error.message);
+    })
 
     this.form = new FormGroup({
       contentId: new FormControl('', [Validators.required]),
       cpId: new FormControl('', [Validators.required]),
+      pfId: new FormControl('', [Validators.required]),
       zipFile :new FormControl( null, null)
     });
   }
@@ -76,6 +88,7 @@ export class FileUploadComponent implements OnInit , OnDestroy{
   uploadData.append('zipFile', this.selectedFile, this.selectedFile.name);
   uploadData.append('contentId',this.form.controls.contentId.value);
   uploadData.append('cpId',this.form.controls.cpId.value);
+  uploadData.append('pfId',this.form.controls.pfId.value);
   this.fileUploadService.upload(uploadData).subscribe(
     res=>{
       alert(res.message);

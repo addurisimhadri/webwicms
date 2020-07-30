@@ -4,6 +4,11 @@ import { PhysicalFolder, CreateConCategoryService } from 'src/app/services/categ
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { ContentType } from 'src/app/models/content-type.model';
+import { ContenttypeService } from 'src/app/services/content/contenttype.service';
+import { DataService } from 'src/app/services/share/data.service';
+declare var jQuery: any;
+
 
 @Component({
   selector: 'app-view-category',
@@ -15,23 +20,40 @@ export class ViewCategoryComponent implements OnInit {
   public dataSource = new MatTableDataSource<PhysicalFolder>();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  contentTypes:ContentType[];
+  contentType:ContentType;
+  ctType :any;
 
-  constructor(private router:Router,private createConCategoryService: CreateConCategoryService) { }
+  constructor(private router:Router,private createConCategoryService: CreateConCategoryService,
+    private contenttypeService: ContenttypeService,private ds: DataService) { }
+    
 
   ngOnInit(): void {
-    this.getConCategories(); 
     this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+    this.dataSource.sort = this.sort;
+    this.contenttypeService.getContentTypes().subscribe( data => {
+      this.contentTypes = data;
+    });
+
+
   }
-  getConCategories() {
-    this.createConCategoryService.getFolders().
+  onChangeContentType(ob) {
+    let cType = ob.value;   
+    this.getConCategories(cType);
+  }
+
+  getConCategories(cType) {
+    this.ctType=cType;
+    this.createConCategoryService.getCtTypeFolders(cType).
     subscribe(res=>{
       this.dataSource.data = res as PhysicalFolder[];
     },error=>{
       alert(error.status+"=========="+error.message);
     });
   }
-  addConCat(){
+  addConCat(ctType){
+    alert(ctType);
+    this.ds.setOption('ctType', ctType); 
     this.router.navigate(['db/createConCat'])
   }
 }

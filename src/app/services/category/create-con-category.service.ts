@@ -7,6 +7,7 @@ export class PhysicalFolder{
   constructor(
     public id?: string,
     public folderName?: string,
+    public contentTypeId?:string,
     public location?: string
   ) {}
 
@@ -27,5 +28,11 @@ export class CreateConCategoryService {
   }
   getFolders() :Observable<PhysicalFolder[]>{
     return this.httpClient.get<PhysicalFolder[]>(this.web_url+"/wicmsapi/pf/getAll");
+  }
+  getCtTypeFolders(cType) :Observable<PhysicalFolder[]>{
+    return this.httpClient.get<PhysicalFolder[]>(this.web_url+"/wicmsapi/pf/"+cType+"/getAll");
+  }
+  getFolder() :Observable<PhysicalFolder[]>{
+    return this.httpClient.get<PhysicalFolder[]>(this.web_url+"/wicmsapi/pf/get");
   }
 }
