@@ -121,6 +121,9 @@ masterToggle() {
       this.fileUploadService.getZileFileNames(cpId,ctId).
       subscribe(res=>{
           this.fTPUploadObjects=res;
+          this.dataSource.data=res;
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
       },error=>{
         alert(error.status+"=========="+error.message);
       }
@@ -132,8 +135,27 @@ masterToggle() {
     }
   }
   onSubmit(){ 
+    this.fTPUploadObjects=this.selection.selected;
+    const uploadData = new FormData();
+    uploadData.append('contentId',this.form.controls.contentId.value);
+    uploadData.append('cpId',this.form.controls.cpId.value);
+    uploadData.append('pfId',this.form.controls.pfId.value); 
+    for (let fTPUploadObject of this.fTPUploadObjects) {
+      uploadData.append('zipFileNames',fTPUploadObject.zipFileName);
+    }
+    this.fileUploadService.ftpUpload(uploadData).
+    subscribe(res=>{
+      this.toastr.showToast('upload', res.message, 'success');
+      this.router.navigate(['db/approveContent'])
+    },
+     error => { 
+      alert(error.status+"=========="+error.message+"=========="+error.data);
+      this.router.navigate(['db'])
+    }
+    );
+          
 
-
+    
   }
 
 }

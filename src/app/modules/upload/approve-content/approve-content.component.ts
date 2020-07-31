@@ -24,7 +24,6 @@ export interface UserData {
 export class ApproveContentComponent implements OnInit {
   displayedColumns: string[] = ['select','contId', 'sampleName','status','ctTypeId', 'name','title'];
   public dataSource = new MatTableDataSource<Content>();
-  //dataSource: MatTableDataSource<Cont>;
   filterValues: any = {};
   blueColor: boolean;
   firstName: boolean;

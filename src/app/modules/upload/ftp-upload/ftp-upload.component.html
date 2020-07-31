@@ -1,8 +1,10 @@
 
-    <mat-card>
-        <h1>Content Upload</h1>
+    
+       
         <form [formGroup]="form" autocomplete="off"  (ngSubmit)="onSubmit()"
         fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-card>
+          <h1>Content Upload</h1>
         <mat-card-content>       
             <p>
             <mat-form-field appearance="fill">
@@ -10,16 +12,6 @@
                 <mat-select  name="contentId" formControlName="contentId">
                   <mat-option *ngFor="let contentType of contentTypes" [value]="contentType.contentId">
                     {{contentType.contentName}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </p>
-            <p>
-              <mat-form-field appearance="fill">
-                <mat-label>Content Provider</mat-label>
-                <mat-select  name="cpId" formControlName="cpId" (selectionChange)="onChangeContentProvider($event)">
-                  <mat-option *ngFor="let contentProvider of contentProviders" [value]="contentProvider.cpId">
-                    {{contentProvider.cpName}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -34,8 +26,21 @@
                 </mat-select>
               </mat-form-field>
             </p>
-           
-            <div class="mat-elevation-z8" *ngIf="fTPUploadObjects" >
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Content Provider</mat-label>
+                <mat-select  name="cpId" formControlName="cpId" (selectionChange)="onChangeContentProvider($event)">
+                  <mat-option *ngFor="let contentProvider of contentProviders" [value]="contentProvider.cpId">
+                    {{contentProvider.cpName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
+            
+          </mat-card-content>
+        </mat-card>
+          <div *ngIf="fTPUploadObjects" >
+            <div class="mat-elevation-z8" >
                 <table mat-table [dataSource]="dataSource" matSort>
                   <ng-container matColumnDef="select">
                     <th mat-header-cell *matHeaderCellDef>
@@ -80,20 +85,17 @@
                 </table>
               
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
-                 <div class="form-group">
-                  <button type="submit" mat-raised-button color="primary">Submit</button>
-                </div> 
-               
+                 
+                <p class="upload">
+                  <button type="submit"  mat-raised-button  color="primary">Upload</button>
+              </p>
               </div>
 
 
 
-            <p class="upload">
-                <button type="submit"  mat-raised-button  color="primary">Upload</button>
-            </p>
+           
           
-        </mat-card-content>
+          </div>
       
 
-    </form>
-      </mat-card>
+        </form>
