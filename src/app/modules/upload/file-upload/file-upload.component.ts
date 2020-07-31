@@ -8,6 +8,7 @@ import {ContentProvider} from '../../../models/content-provider';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router,NavigationEnd } from '@angular/router';
 import { CreateConCategoryService, PhysicalFolder } from 'src/app/services/category/create-con-category.service';
+import { MytoasterService } from 'src/app/tools/toast/mytoaster.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -25,8 +26,8 @@ export class FileUploadComponent implements OnInit , OnDestroy{
   contentProvider:ContentProvider;
   physicalFolder : PhysicalFolder=new PhysicalFolder('','','','');
   physicalFolders : PhysicalFolder[];
-  @Input() allowMultipleFiles = false;
-  @Input() acceptedTypes = '*.*';
+  //@Input() allowMultipleFiles = false;
+  //@Input() acceptedTypes = '*.*';
   selectedFile: File;
   selectedFileText = '';
   mySubscription: any;
@@ -35,7 +36,8 @@ export class FileUploadComponent implements OnInit , OnDestroy{
     private contenttypeService: ContenttypeService,
     private contentproviderService:ContentproviderService,
     private router:Router,
-    private createConCategoryService: CreateConCategoryService
+    private createConCategoryService: CreateConCategoryService,
+    private toastr: MytoasterService
     ) {
     this.data = ds.getOption();
    
@@ -78,10 +80,6 @@ export class FileUploadComponent implements OnInit , OnDestroy{
       zipFile :new FormControl( null, null)
     });
   }
-  uploadType(){
-   this.cType=this.data.cType;
-   //alert(this.cType);
- }
 
  onSubmit(){  
   const uploadData = new FormData();
@@ -91,7 +89,7 @@ export class FileUploadComponent implements OnInit , OnDestroy{
   uploadData.append('pfId',this.form.controls.pfId.value);
   this.fileUploadService.upload(uploadData).subscribe(
     res=>{
-      alert(res.message);
+      this.toastr.showToast('upload', res.message, 'success');
       this.router.navigate(['db/approveContent']);
     }, error => { 
       alert(error.status+"=========="+error.message+"=========="+error.data);

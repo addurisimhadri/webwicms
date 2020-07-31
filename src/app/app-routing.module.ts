@@ -10,6 +10,7 @@ import { ApproveContentComponent } from './modules/upload/approve-content/approv
 import {ViewContentComponent} from './modules/content/view-content/view-content.component'
 import { CreateCategoryComponent } from './modules/category/create-category/create-category.component';
 import { ViewCategoryComponent } from './modules/category/view-category/view-category.component';
+import { FtpUploadComponent } from './modules/upload/ftp-upload/ftp-upload.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,9 @@ const routes: Routes = [
     },
     {
       path:'fileUpload',component:FileUploadComponent,canActivate:[AuthGuardService]
+    },
+    {
+      path:'ftpUpload',component:FtpUploadComponent,canActivate:[AuthGuardService]
     },
     {
       path:'approveContent',component:ApproveContentComponent,canActivate:[AuthGuardService]

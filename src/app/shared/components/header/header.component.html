@@ -20,9 +20,21 @@
             <button mat-menu-item [matMenuTriggerFor]="approveContent" >Aprove Content</button>
         </mat-menu>
         <mat-menu #uploadContent="matMenu">
-            <button mat-menu-item (click)="upload(6)">Upload Songs</button>
-            <button mat-menu-item (click)="upload(41)" >Upload Video</button>
+            <button mat-menu-item [matMenuTriggerFor]="zip">Zip</button>
+            <button mat-menu-item [matMenuTriggerFor]="ftp">Ftp</button>
+        </mat-menu>
+        <mat-menu #zip="matMenu">
+            <button mat-menu-item (click)="upload(19)">Upload HTML5 Games</button>
+            <button mat-menu-item (click)="upload(42)" >Upload VideoClips</button>
             <button mat-menu-item (click)="upload(31)" >Upload Images</button>
+            <button mat-menu-item (click)="upload(11)" >Upload Games</button>
+        </mat-menu>
+        <mat-menu #ftp="matMenu">
+            <button mat-menu-item (click)="uploadftp(19)">Upload HTML5 Games</button>
+            <button mat-menu-item (click)="uploadftp(42)" >Upload VideoClips</button>
+            <button mat-menu-item (click)="uploadftp(31)" >Upload Images</button>
+            <button mat-menu-item (click)="uploadftp(11)" >Upload Games</button>
+            <button mat-menu-item (click)="uploadftp(6)" >Upload Songs</button>
         </mat-menu>
         <mat-menu #approveContent="matMenu">            
             <button mat-menu-item (click)="approve(6)">Approve Songs</button>

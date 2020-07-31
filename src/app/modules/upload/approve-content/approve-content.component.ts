@@ -7,7 +7,7 @@ import {ContentService} from '../../../services/content/content.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DataService } from 'src/app/services/share/data.service';
 import {Content} from '../../../models/content';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 export interface UserData {
   id: string;
@@ -51,12 +51,25 @@ masterToggle() {
       this.selection.clear() :
       this.dataSource.data.forEach(row => this.selection.select(row));
 }
-
+mySubscription: any;
   constructor(private ds: DataService,private contentService: ContentService, private router:Router) {
     this.data = ds.getOption();
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;    
+}; this.mySubscription = this.router.events.subscribe((event) => {    
+  if (event instanceof NavigationEnd) {    
+    // Trick the Router into believing it's last link wasn't previously loaded    
+    this.router.navigated = false;    
+  }    
+});
+
     }
 
-  
+    ngOnDestroy() {
+      if (this.mySubscription) {  
+        this.mySubscription.unsubscribe();  
+      }  
+    }
   ngOnInit() {
     this.getApprovableContentByCT();
     this.dataSource.paginator = this.paginator;
@@ -66,7 +79,7 @@ masterToggle() {
   }
   getApprovableContentByCT(){
     this.cType=this.data.cType;
-    alert(this.cType);
+    //alert(this.cType);
     this.contentService.getApprovableContentByCT(this.cType).subscribe(
       res=>{
         this.dataSource.data = res as Content[];

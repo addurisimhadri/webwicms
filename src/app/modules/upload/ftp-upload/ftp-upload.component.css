@@ -1,0 +1,17 @@
+.mat-card {
+	width: 30%;
+	margin: 0 auto;
+}
+.mat-form-field {
+    width: 70%;
+    margin-left: 50px;
+}
+.file{
+    width: 85%;
+    text-align: center;
+}
+.upload{
+	padding: 10px;
+	width: 30%;
+	margin: 0 auto;
+}

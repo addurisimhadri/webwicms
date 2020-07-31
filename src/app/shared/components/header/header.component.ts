@@ -25,6 +25,12 @@ export class HeaderComponent implements OnInit {
     this.ds.setOption('cType', cType);  
     this.router.navigate(['db/fileUpload'])
   }
+  uploadftp(cType : any){
+    //alert(cType);
+    this.ds.setOption('cType', cType);  
+    this.router.navigate(['db/ftpUpload'])
+  }
+  
   approve(cType : any){
     this.ds.setOption('cType', cType);  
     this.router.navigate(['db/approveContent'])

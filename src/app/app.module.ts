@@ -16,7 +16,9 @@ import { EditContentComponent } from './modules/content/edit-content/edit-conten
 import { DeleteContentComponent } from './modules/content/delete-content/delete-content.component';
 import { CreateCategoryComponent } from './modules/category/create-category/create-category.component';
 import { ViewCategoryComponent } from './modules/category/view-category/view-category.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import {MytoasterService } from './tools/toast/mytoaster.service';
+import { FtpUploadComponent } from './modules/upload/ftp-upload/ftp-upload.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { ViewCategoryComponent } from './modules/category/view-category/view-cat
     EditContentComponent,
     DeleteContentComponent,
     CreateCategoryComponent,
-    ViewCategoryComponent
+    ViewCategoryComponent,
+    FtpUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -35,12 +38,15 @@ import { ViewCategoryComponent } from './modules/category/view-category/view-cat
     DefaultModule,
     MymaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(
+      )
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
-      multi: true}
+      multi: true},
+      MytoasterService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 import { ContentType } from 'src/app/models/content-type.model';
 import { ContenttypeService } from 'src/app/services/content/contenttype.service';
 import { DataService } from 'src/app/services/share/data.service';
-declare var jQuery: any;
+import {MytoasterService} from '../../../tools/toast/mytoaster.service'
+
 
 
 @Component({
@@ -25,7 +26,9 @@ export class ViewCategoryComponent implements OnInit {
   ctType :any;
 
   constructor(private router:Router,private createConCategoryService: CreateConCategoryService,
-    private contenttypeService: ContenttypeService,private ds: DataService) { }
+    private contenttypeService: ContenttypeService,private ds: DataService,
+    private toastr: MytoasterService
+    ) { }
     
 
   ngOnInit(): void {
@@ -52,8 +55,11 @@ export class ViewCategoryComponent implements OnInit {
     });
   }
   addConCat(ctType){
-    alert(ctType);
-    this.ds.setOption('ctType', ctType); 
-    this.router.navigate(['db/createConCat'])
+    if(typeof ctType !== 'undefined'){
+      this.ds.setOption('ctType', ctType); 
+      this.router.navigate(['db/createConCat'])
+    }else{
+      this.toastr.showToast('', 'Please select Content Type', 'error');
+    }
   }
 }

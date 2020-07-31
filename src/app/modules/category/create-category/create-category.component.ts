@@ -27,10 +27,14 @@ export class CreateCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.ctType=this.data.ctType;
-    alert(this.ctType);
-    this.contenttypeService.getContentType(this.ctType).subscribe( data => {
-      this.contentTypes = data;
-    })
+    if(typeof this.ctType !== 'undefined'){
+      //alert(this.ctType);
+      this.contenttypeService.getContentType(this.ctType).subscribe( data => {
+        this.contentTypes = data;
+      })
+    }else{
+      this.router.navigate(['db/viewConCat'])
+    }
   }
   createForm() {
     this.formGroup = this.formBuilder.group({
@@ -42,7 +46,7 @@ export class CreateCategoryComponent implements OnInit {
     this.physicalFolder=physicalFolder;
     const folderName=this.formGroup.get('folderName').value;
     const contentTypeId=this.formGroup.get('contentTypeId').value;
-    alert(folderName+"=============="+contentTypeId)
+    //alert(folderName+"=============="+contentTypeId)
     if(folderName.trim()!="" && contentTypeId !=""){
       this.createConCategoryService.createFolder(this.physicalFolder).
       subscribe(res=>{
