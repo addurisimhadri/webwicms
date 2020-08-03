@@ -34,13 +34,15 @@
             <button mat-menu-item (click)="uploadftp(42)" >Upload VideoClips</button>
             <button mat-menu-item (click)="uploadftp(31)" >Upload Images</button>
             <button mat-menu-item (click)="uploadftp(11)" >Upload Games</button>
-            <button mat-menu-item (click)="uploadftp(6)" >Upload Songs</button>
+            <button mat-menu-item (click)="uploadftp(6)" >Upload SFCSongs</button>
         </mat-menu>
         <mat-menu #approveContent="matMenu">            
-            <button mat-menu-item (click)="approve(6)">Approve Songs</button>
-            <button mat-menu-item (click)="approve(41)" >Approve Videos</button>
+            <button mat-menu-item (click)="approve(6)">Approve SFCSongs</button>
+            <button mat-menu-item (click)="approve(41)" >Approve VideoClips</button>
             <button mat-menu-item (click)="approve(31)" >Approve Images</button>
-        </mat-menu>
+            <button mat-menu-item (click)="approve(19)" >Approve HTML5 Games</button>
+            <button mat-menu-item (click)="approve(11)" >Approve Games</button>
+        </mat-menu> 
         <mat-menu #contentFolders="matMenu">
             <button mat-menu-item (click)="viewConCat()" >View/Add Category</button>
             <button mat-menu-item >Edit Content</button>
