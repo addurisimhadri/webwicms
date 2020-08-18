@@ -29,4 +29,15 @@ export class ContentService {
     return this.httpClient.post<ApiResponse>(this.web_url+"/wicmsapi/cont/updatestatus",JSON.stringify(Data),httpOptions);  
 
   }
+  delete(requestData)  :Observable<ApiResponse>{
+    let Data={"contents":requestData}
+    console.log("Data "+JSON.stringify(Data));
+    const httpOptions = {
+      headers: new HttpHeaders({     
+        'Content-Type':  'application/json',        
+      })
+    };
+    return this.httpClient.post<ApiResponse>(this.web_url+"/wicmsapi/cont/delete",JSON.stringify(Data),httpOptions);  
+
+  }
 }

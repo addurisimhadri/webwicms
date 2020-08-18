@@ -42,4 +42,8 @@ export class HeaderComponent implements OnInit {
   viewConCat(){
     this.router.navigate(['db/viewConCat'])
   }
+  delete(cType : any){
+    this.ds.setOption('cType', cType);  
+    this.router.navigate(['db/deleteContent'])
+  }
 }

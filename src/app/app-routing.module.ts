@@ -11,6 +11,7 @@ import {ViewContentComponent} from './modules/content/view-content/view-content.
 import { CreateCategoryComponent } from './modules/category/create-category/create-category.component';
 import { ViewCategoryComponent } from './modules/category/view-category/view-category.component';
 import { FtpUploadComponent } from './modules/upload/ftp-upload/ftp-upload.component';
+import { DeleteContentComponent } from './modules/content/delete-content/delete-content.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,9 @@ const routes: Routes = [
     },
     {
       path:'viewContent',component:ViewContentComponent,canActivate:[AuthGuardService]
+    },
+    {
+      path:'deleteContent',component:DeleteContentComponent,canActivate:[AuthGuardService]
     },
     {
       path:'viewConCat',component:ViewCategoryComponent,canActivate:[AuthGuardService]
