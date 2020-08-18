@@ -37,7 +37,7 @@ export class ContentService {
         'Content-Type':  'application/json',        
       })
     };
-    return this.httpClient.post<ApiResponse>(this.web_url+"/wicmsapi/cont/delete",JSON.stringify(Data),httpOptions);  
+    return this.httpClient.delete<ApiResponse>(this.web_url+"/wicmsapi/cont/delete",JSON.stringify(Data),httpOptions);  
 
   }
 }

@@ -91,7 +91,7 @@ mySubscription: any;
   
   onSubmit(){
     this.contents=this.selection.selected;
-   this.contentService.updateStatus(this.contents).subscribe(res=>{
+   this.contentService.delete(this.contents).subscribe(res=>{
       alert(res.message);
       this.getApprovableContentByCT();
       this.selection.clear();

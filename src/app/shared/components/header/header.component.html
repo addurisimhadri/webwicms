@@ -55,9 +55,9 @@
         </mat-menu>
 
         <mat-menu #deleteContent="matMenu">            
-            <button mat-menu-item (click)="delete(6)">View Songs</button>
-            <button mat-menu-item (click)="delete(41)" >View Videos</button>
-            <button mat-menu-item (click)="delete(31)" >View Images</button>
+            <button mat-menu-item (click)="delete(6)">Delete Songs</button>
+            <button mat-menu-item (click)="delete(41)" >Delete Videos</button>
+            <button mat-menu-item (click)="delete(31)" >Delete Images</button>
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="portalManagement">Portal Management</button> 
         <mat-menu #portalManagement="matMenu">
@@ -71,7 +71,7 @@
             <button mat-menu-item >Delete Category</button>
             <button mat-menu-item >Order Preference</button>
             <button mat-menu-item >AOC Configuration</button>
-        </mat-menu>
+        </mat-menu> 
 
         <button mat-button [matMenuTriggerFor]="misReports">MIS Reports</button> 
         <mat-menu #misReports="matMenu">
