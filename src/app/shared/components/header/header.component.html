@@ -45,8 +45,6 @@
             <button mat-menu-item >Edit Content</button>
             <button mat-menu-item [matMenuTriggerFor]="viewContent">View Content</button>
             <button mat-menu-item [matMenuTriggerFor]="deleteContent">Delete Content</button>
-            <button mat-menu-item >Edit Content Device Group</button>
-            <button mat-menu-item >Bulk Delete Content</button>
         </mat-menu>
         <mat-menu #viewContent="matMenu">            
             <button mat-menu-item (click)="view(6)">View Songs</button>

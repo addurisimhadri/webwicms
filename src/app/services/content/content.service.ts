@@ -35,9 +35,9 @@ export class ContentService {
     const httpOptions = {
       headers: new HttpHeaders({     
         'Content-Type':  'application/json',        
-      })
+      }),body: JSON.stringify(Data)
     };
-    return this.httpClient.delete<ApiResponse>(this.web_url+"/wicmsapi/cont/delete",JSON.stringify(Data),httpOptions);  
+    return this.httpClient.delete<ApiResponse>(this.web_url+"/wicmsapi/cont/delete",httpOptions);  
 
   }
 }
