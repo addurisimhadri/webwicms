@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { DefaultComponent } from './default.component';
 import { DashboardComponent } from '../../modules/dashboard/dashboard.component';
 import { SharedModule } from '../../shared/shared.module';
@@ -14,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ContentService } from 'src/app/services/content/content.service';
 import { ContenttypeService } from 'src/app/services/content/contenttype.service';
 import { ContentproviderService } from 'src/app/services/content/contentprovider.service';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -25,12 +27,15 @@ import { ContentproviderService } from 'src/app/services/content/contentprovider
   ],
   imports: [
     CommonModule    ,
-    RouterModule,
+    AppRoutingModule,
     SharedModule,
     MatSidenavModule,
     MymaterialModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot(
+      )
   ],
   providers:[
     FileUploadService,

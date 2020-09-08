@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthenticationService {
   web_url : any="http://localhost:2020";
+  //web_url : any="http://dev.wicore.in:8080";
   constructor(private httpClient:HttpClient) { }
 
   authenticate(loginPayload) { 
