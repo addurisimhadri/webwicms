@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ApproveContentComponent } from './approve-content.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { DataService } from 'src/app/services/share/data.service';
+import { ContentService } from 'src/app/services/content/content.service';
 
 describe('ApproveContentComponent', () => {
   let component: ApproveContentComponent;
@@ -8,7 +11,12 @@ describe('ApproveContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ApproveContentComponent ]
+      declarations: [ ApproveContentComponent ],
+      imports: [HttpClientTestingModule,
+        RouterTestingModule.withRoutes([])],
+        providers:[DataService,
+          ContentService
+        ]
     })
     .compileComponents();
   }));

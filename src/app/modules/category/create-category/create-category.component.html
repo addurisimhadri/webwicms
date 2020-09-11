@@ -5,7 +5,7 @@
         <p>
           <mat-form-field appearance="fill">
               <mat-label>Content Type</mat-label>
-              <mat-select  name="contentTypeId" formControlName="contentTypeId">
+              <mat-select  name="contentTypeId"  id="contentTypeId" formControlName="contentTypeId">
                 <mat-option *ngFor="let contentType of contentTypes" [value]="contentType.contentId">
                   {{contentType.contentName}}
                 </mat-option>
@@ -14,7 +14,7 @@
           </p>
           <p>       
         <mat-form-field class="full-width-input">
-          <input matInput placeholder="Category Name"  formControlName="folderName"   required>
+          <input matInput placeholder="Category Name" id="folderName"  formControlName="folderName"   required>
           <mat-error *ngIf="!formGroup.controls['folderName'].valid && formGroup.controls['folderName'].touched">
             Please provide Category Name
           </mat-error> 

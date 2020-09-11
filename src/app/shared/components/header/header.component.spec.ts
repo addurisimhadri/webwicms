@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { HeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { DataService } from 'src/app/services/share/data.service';
+import { MymaterialModule } from 'src/app/mymaterial/mymaterial.module';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
@@ -10,7 +11,7 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
-      imports: [HttpClientTestingModule,
+      imports: [HttpClientTestingModule, MymaterialModule,
         RouterTestingModule.withRoutes([])],
         providers:[DataService]
 
@@ -24,7 +25,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create',inject([HeaderComponent], (component: HeaderComponent) => {
+  it('should create', () => {
     expect(component).toBeTruthy();
-  }));
+  });
 });
